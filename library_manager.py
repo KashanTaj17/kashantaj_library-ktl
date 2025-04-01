@@ -279,27 +279,30 @@ def create_visualizations(stats):
 
 # Load Library.
 load_library()
-st.sidebar.markdown("<h1 style='text-align: center;'> Navigation </h1>", unsafe_allow_html= True)
+
+st.sidebar.markdown("<h1 style='text-align: center;'> Navigation </h1>", unsafe_allow_html=True)
+
 lottie_book = load_lottieurl("https://assests9.lottieflies.com/temp/1f20_aKAfIn.json")
 if lottie_book:
     with st.sidebar:
-        st_lottie(lottie_book, height= 200, key='book_animation')
+        st_lottie(lottie_book, height=200, key='book_animation')
 
     nav_options = st.sidebar.radio(
         "choose an option:",
-        ["View Library","Add Book","Search Books", "Library Statistics"])
+        ["View Library", "Add Book", "Search Books", "Library Statistics"]
+    )
 
- nav_options = "View Library"
 if nav_options == "View Library":
     st.session_state.current_view = "library"
 elif nav_options == "Add Book":
     st.session_state.current_view = "add"
-elif nav_options == "search_books":
+elif nav_options == "Search Books": 
     st.session_state.current_view = "search"
 elif nav_options == "Library Statistics":
-    st.session_state.current_view = "stats"   
+    st.session_state.current_view = "stats"
 
 st.markdown("<h1 class='main-header'> Personal Library Manager </h1>", unsafe_allow_html=True)
+
 if st.session_state.current_view == "add":
     st.markdown("<h2 class='sub-header'> Add a new book </h2>", unsafe_allow_html=True)
 
@@ -431,4 +434,3 @@ else:
             st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
 st.markdown("---")
 st.markdown("Copyright @ Muhammad Kashan Taj Personal Library Manager", unsafe_allow_html=True)
-
