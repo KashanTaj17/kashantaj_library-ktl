@@ -288,7 +288,8 @@ if lottie_book:
     nav_options = st.sidebar.radio(
         "choose an option:",
         ["View Library","Add Book","Search Books", "Library Statistics"])
-    
+
+ nav_options = "View Library"
 if nav_options == "View Library":
     st.session_state.current_view = "library"
 elif nav_options == "Add Book":
