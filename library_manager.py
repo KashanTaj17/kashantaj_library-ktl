@@ -292,6 +292,8 @@ if lottie_book:
         ["View Library", "Add Book", "Search Books", "Library Statistics"]
     )
 
+nav_options = st.selectbox("Choose an option:", ["View Library", "Add Book", "Remove Book"])
+
 if nav_options == "View Library":
     st.session_state.current_view = "library"
 elif nav_options == "Add Book":
