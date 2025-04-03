@@ -439,7 +439,7 @@ else:
     with col2:
         st.metric("Books Read", stats['read_books'])
     with col3:
-        st.metric("Percentage Read", f"{stats['percentage_read']:.1f}%")
+        st.metric("Percentage Read", f"{stats.get('percentage_read', 0):.1f}%")
         create_visualizations()
 
     if stats['author']:
