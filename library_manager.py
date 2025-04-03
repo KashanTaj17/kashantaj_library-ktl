@@ -290,6 +290,10 @@ def create_visualizations(stats):
         )
         st.plotly_chart(fig_decades, use_container_width=True)
 
+# Initialize 'book'
+if 'book' not in st.session_state:
+    st.session_state.book = {'added': False}
+
 # Load Library
 load_library()
 
@@ -319,34 +323,35 @@ st.markdown("<h1 class='main-header'>Personal Library Manager</h1>", unsafe_allo
 if st.session_state.current_view == "add":
     st.markdown("<h2 class='sub-header'>Add a New Book</h2>", unsafe_allow_html=True)
 
-# Adding Books Input Form
-with st.form(key='add_book_form'):
-    col1, col2 = st.columns(2)
+    # Adding Books Input Form
+    with st.form(key='add_book_form'):
+        col1, col2 = st.columns(2)
 
-    with col1:
-        title = st.text_input("Book Title", max_chars=100)
-        author = st.text_input("Author", max_chars=100)
-        publication_year = st.number_input("Publication Year", min_value=1000, max_value=datetime.now().year, step=1, value=2023)
+        with col1:
+            title = st.text_input("Book Title", max_chars=100)
+            author = st.text_input("Author", max_chars=100)
+            publication_year = st.number_input("Publication Year", min_value=1000, max_value=datetime.now().year, step=1, value=2023)
 
-    with col2:
-        genre = st.selectbox("Genre", [
-            "Fiction", "Non-Fiction", "Science", "Technology", "Fantasy", "Romance", "Poetry", "Self-Help", "Art", "Religion", "History", "Other"
-        ])
-        read_status = st.radio("Read Status", ["Read", "Unread"], horizontal=True)
-        read_book = read_status == "Read"
+        with col2:
+            genre = st.selectbox("Genre", [
+                "Fiction", "Non-Fiction", "Science", "Technology", "Fantasy", "Romance", "Poetry", "Self-Help", "Art", "Religion", "History", "Other"
+            ])
+            read_status = st.radio("Read Status", ["Read", "Unread"], horizontal=True)
+            read_book = read_status == "Read"
 
-    submit_button = st.form_submit_button(label="Add Book")
+        submit_button = st.form_submit_button(label="Add Book")
 
-    if submit_button and title and author:
-        add_book(title, author, publication_year, genre, read_book)
+        if submit_button and title and author:
+            add_book(title, author, publication_year, genre, read_book)
 
-    if st.session_state.book.added:
-        st.markdown("<div class='success-message'> Book added successfully! </div>", unsafe_allow_html=True)
-        st.balloons()
-        st.session_state.book_added = False
+        # Check if the book was added successfully
+        if st.session_state.book['added']:
+            st.markdown("<div class='success-message'> Book added successfully! </div>", unsafe_allow_html=True)
+            st.balloons()
+            st.session_state.book['added'] = False
 
-    elif st.session_state.current_view == "library":
-        st.markdown("<h2 class='sub-header'> Your Library </h2>", unsafe_allow_html=True)
+elif st.session_state.current_view == "library":
+    st.markdown("<h2 class='sub-header'> Your Library </h2>", unsafe_allow_html=True)
 
     if not st.session_state.library:
         st.markdown("<div class='warning-message'> Your library is empty. Add some books to get started! </div>", unsafe_allow_html=True)
