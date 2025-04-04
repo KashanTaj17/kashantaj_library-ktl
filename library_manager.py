@@ -425,28 +425,29 @@ if search_term:
             "<div class='warning-message' style='color: red; font-weight: bold;'>No books found matching your search.</div>",
             unsafe_allow_html=True
         )
-    
+if st.session_state.current_view == "something_else":
+    create_visualizations()
 elif st.session_state.current_view == "stats":
     st.markdown("<h2 class='sub-header'> Library statistics </h2>", unsafe_allow_html=True)
 
-if not st.session_state.library:
-    st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats! </div>", unsafe_allow_html=True)
-else:
-    stats = get_library_stats()
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Total Books", stats['total_books'])
-    with col2:
-        st.metric("Books Read", stats['read_books'])
-    with col3:
-        st.metric("Percentage Read", f"{stats.get('percentage_read', 0):.1f}%")
-        create_visualizations()
+    if not st.session_state.library:
+        st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats! </div>", unsafe_allow_html=True)
+    else:
+        stats = get_library_stats()
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Total Books", stats['total_books'])
+        with col2:
+            st.metric("Books Read", stats['read_books'])
+        with col3:
+            st.metric("Percentage Read", f"{stats.get('percentage_read', 0):.1f}%")
+            create_visualizations()
 
-    if stats['author']:
-        st.markdown("<h3> Top Authors </h3>", unsafe_allow_html=True)
-        top_authors = dict(list(stats['author'].items())[:5])
-        for author, count in top_authors.items():
-            st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
+        if stats['author']:
+            st.markdown("<h3> Top Authors </h3>", unsafe_allow_html=True)
+            top_authors = dict(list(stats['author'].items())[:5])
+            for author, count in top_authors.items():
+                st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
 
 st.markdown("---")
 st.markdown("Copyright @ Muhammad Kashan Taj Personal Library Manager", unsafe_allow_html=True)
