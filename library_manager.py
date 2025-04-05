@@ -53,13 +53,13 @@ st.markdown("""
     }
 
     .book-card {
-        background-color: #1F2937; /* DARK GRAY FOR BETTER TEXT VISIBILITY */
+        background-color: #1F2937; /* Dark background */
         border-radius: 0.5rem;
         padding: 1rem;
         margin-bottom: 1rem;
         border-left: 5px solid #3B82F6;
         transition: transform 0.3s ease;
-        color: white; /* Ensures text inside remains visible */
+        color: white;
     }
 
     .book-card-hover {
@@ -68,8 +68,8 @@ st.markdown("""
     }
 
     .read-badge {
-        background-color: #070807;
-        color: black;
+        background-color: #10B981; /* green */
+        color: white; /* white text for contrast */
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.875rem;
@@ -77,8 +77,8 @@ st.markdown("""
     }
 
     .unread-badge {
-        background-color: #000302;
-        color: black;
+        background-color: #EF4444; /* red */
+        color: white; /* white text for contrast */
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.875rem;
@@ -94,7 +94,6 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-
 
 # Initialization Of State.
 def load_lottieurl(url):
