@@ -24,6 +24,7 @@ st.markdown("""
     .main-header {
         font-size: 3rem !important;
         color: #1E3A8A;
+        background-color: black;
         font-weight: 700;
         margin-bottom: 1rem;
         text-align: center;
@@ -37,7 +38,6 @@ st.markdown("""
         margin-top: 1rem;
         margin-bottom: 1rem;
         }
-            
     .sucess-message {
         padding: 1rem;
         background-color: #ECFDF5;
@@ -67,7 +67,7 @@ st.markdown("""
         }
             
     .read-badge {
-        background-color: #10B981;
+        background-color: black;
         color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
@@ -76,7 +76,7 @@ st.markdown("""
         }
     
     .unread-badge {
-        background-color: #F87171;
+        background-color: black;
         color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
@@ -93,7 +93,6 @@ st.markdown("""
         }
 </style>
 """, unsafe_allow_html=True)
-
 
 # Initialization Of State.
 def load_lottieurl(url):
