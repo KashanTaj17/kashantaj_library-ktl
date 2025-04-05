@@ -28,70 +28,73 @@ st.markdown("""
         margin-bottom: 1rem;
         text-align: center;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-            
+    }
+
     .sub_header {
         font-size: 1.8rem !important;
-        color: #3B82F6
+        color: #3B82F6;
         font-weight: 600;
         margin-top: 1rem;
         margin-bottom: 1rem;
-        }
+    }
+
     .sucess-message {
         padding: 1rem;
         background-color: #ECFDF5;
         border-left: 5px solid #10B981;
         border-radius: 0.375rem;
-        }
+    }
 
     .warning-message {
         padding: 1rem;
         background-color: #FEF3C7;
         border-left: 5px solid #F59E0B;
         border-radius: 0.375rem;
-        }
-            
+    }
+
     .book-card {
-        background-color: #F3F4F6;
+        background-color: #1F2937; /* DARK GRAY FOR BETTER TEXT VISIBILITY */
         border-radius: 0.5rem;
         padding: 1rem;
         margin-bottom: 1rem;
         border-left: 5px solid #3B82F6;
         transition: transform 0.3s ease;
-        }
-            
+        color: white; /* Ensures text inside remains visible */
+    }
+
     .book-card-hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-        }
-            
-   .read-badge {
-        background-color: #070807
+    }
+
+    .read-badge {
+        background-color: #070807;
         color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.875rem;
         font-weight: 600;
-        }
+    }
 
     .unread-badge {
-        background-color: #000302
+        background-color: #000302;
         color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.875rem;
         font-weight: 600;
-        }
-            
+    }
+
     .action-button {
         margin-right: 0.5rem;
-        }
-            
+    }
+
     .stButton>button {
         border-radius: 0.375rem;
-        }
+    }
 </style>
 """, unsafe_allow_html=True)
+
 
 # Initialization Of State.
 def load_lottieurl(url):
