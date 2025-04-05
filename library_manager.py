@@ -65,18 +65,18 @@ st.markdown("""
         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
             
-    .read-badge {
+   .read-badge {
         background-color: #10B981;
-        color: #050505;
+        color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.875rem;
         font-weight: 600;
         }
-    
+
     .unread-badge {
         background-color: #F87171;
-        color: #050505;
+        color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.875rem;
