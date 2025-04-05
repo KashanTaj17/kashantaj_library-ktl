@@ -445,7 +445,7 @@ else:
         st.metric("Books Read", stats.get('read_books', 0))
     with col3:
         st.metric("Percentage Read", f"{stats.get('percentage_read', 0):.1f}%")
-        create_visualizations()
+    create_visualizations(stats)
 
     if stats.get('author'):  # safe check to avoid KeyError
         st.markdown("<h3> Top Authors </h3>", unsafe_allow_html=True)
