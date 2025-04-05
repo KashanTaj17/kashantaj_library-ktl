@@ -438,15 +438,16 @@ if not st.session_state.library:
 else:
     stats = get_library_stats()
     col1, col2, col3 = st.columns(3)
+
     with col1:
-        st.metric("Total Books", stats['total_books'])
+        st.metric("Total Books", stats.get('total_books', 0))
     with col2:
-        st.metric("Books Read", stats['read_books'])
+        st.metric("Books Read", stats.get('read_books', 0))
     with col3:
-        st.metric("Percentage Read", f"{stats['percentage_read']:.1f}%")
+        st.metric("Percentage Read", f"{stats.get('percentage_read', 0):.1f}%")
         create_visualizations()
 
-    if stats['author']:
+    if stats.get('author'):  # safe check to avoid KeyError
         st.markdown("<h3> Top Authors </h3>", unsafe_allow_html=True)
         top_authors = dict(list(stats['author'].items())[:5])
         for author, count in top_authors.items():
