@@ -66,7 +66,7 @@ st.markdown("""
         }
             
    .read-badge {
-        background-color: #10B981;
+        background-color: #070807
         color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
@@ -75,7 +75,7 @@ st.markdown("""
         }
 
     .unread-badge {
-        background-color: #F87171;
+        background-color: #000302
         color: black;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
