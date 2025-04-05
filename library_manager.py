@@ -410,11 +410,14 @@ if hasattr(st.session_state, 'search_results'):
                     </div>
                     """, unsafe_allow_html=True)
 
-  search_term = st.text_input("Search for a book:")
+ search_term = st.text_input("Search for a book:")
 
 if search_term:  
-    found_books = [book for book in st.session_state.library if search_term.lower() in book["title"].lower()]
-    
+    found_books = [
+        book for book in st.session_state.library
+        if search_term.lower() in book["title"].lower()
+    ]
+
     if found_books:
         for book in found_books:
             st.write(f"📖 **{book['title']}** by {book['author']}")
@@ -423,12 +426,15 @@ if search_term:
             "<div class='warning-message' style='color: red; font-weight: bold;'>No books found matching your search.</div>",
             unsafe_allow_html=True
         )
-    
+
 elif st.session_state.current_view == "stats":
     st.markdown("<h2 class='sub-header'> Library statistics </h2>", unsafe_allow_html=True)
 
 if not st.session_state.library:
-    st.markdown("<div class='warning-message'> Your library is empty. Add some books to see stats! </div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='warning-message'> Your library is empty. Add some books to see stats! </div>",
+        unsafe_allow_html=True
+    )
 else:
     stats = get_library_stats()
     col1, col2, col3 = st.columns(3)
@@ -439,7 +445,7 @@ else:
     with col3:
         st.metric("Percentage Read", f"{stats['percentage_read']:.1f}%")
         create_visualizations()
-        
+
     if stats['author']:
         st.markdown("<h3> Top Authors </h3>", unsafe_allow_html=True)
         top_authors = dict(list(stats['author'].items())[:5])
