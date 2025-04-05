@@ -410,9 +410,9 @@ if hasattr(st.session_state, 'search_results'):
                     </div>
                     """, unsafe_allow_html=True)
 
- search_term = st.text_input("Search for a book:")
+search_term = st.text_input("Search for a book:")
 
-if search_term:  
+if search_term:
     found_books = [
         book for book in st.session_state.library
         if search_term.lower() in book["title"].lower()
